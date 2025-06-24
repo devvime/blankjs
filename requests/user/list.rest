@@ -1,0 +1,5 @@
+### List all users
+GET {{baseURL}}/user
+
+### List user by id
+GET {{baseURL}}/user/7

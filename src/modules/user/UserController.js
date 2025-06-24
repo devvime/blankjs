@@ -6,6 +6,10 @@ import UserDTO from "./UserDTO.js";
 
 const UserController = express.Router();
 
+UserController.get("/user", UserService.index);
+
+UserController.get("/user/:id", UserService.show);
+
 UserController.post(
   "/user",
   body("name").notEmpty(),

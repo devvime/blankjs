@@ -2,7 +2,13 @@ import User from "./User.js";
 
 class UserService {
   async index(req, res) {
-    res.send("Hello World!");
+    const users = await User.findAll();
+    res.json(users);
+  }
+
+  async show(req, res) {
+    const user = await User.findById(req.params.id);
+    res.json(user);
   }
 
   async store(req, res) {
