@@ -1,0 +1,36 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "nodemon src/main.js",
+    "migrate:make": "npx knex migrate:make",
+    "migrate:dev": "npx knex migrate:latest --env development",
+    "migrate:dev:rollback": "npx knex migrate:rollback --env development",
+    "migrate:stg": "npx knex migrate:latest --env staging",
+    "migrate:stg:rollback": "npx knex migrate:rollback --env staging",
+    "migrate:prod": "npx knex migrate:latest --env production",
+    "migrate:prod:rollback": "npx knex migrate:rollback --env production",
+    "seed:make": "npx knex seed:make",
+    "seed:dev:run": "npx knex seed:run --env development --esm"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

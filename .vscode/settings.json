@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "baseURL": "http://localhost:3000",
+      "token": ""
+    }
+  }
+}
