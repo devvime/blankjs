@@ -20,4 +20,14 @@ UserController.post(
   UserService.store
 );
 
+UserController.put(
+  "/user/:id",
+  body("name").optional(),
+  body("email").isEmail().optional(),
+  body("password").isEmpty(),
+  body("role").isEmpty(),
+  UserDTO.verify,
+  UserService.update
+);
+
 export default UserController;

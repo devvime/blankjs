@@ -1,0 +1,8 @@
+### Register new user 
+PUT {{baseURL}}/user/8
+Content-Type: application/json
+
+{
+  "name": "Steve",
+  "email": "steve@steve.com"
+}

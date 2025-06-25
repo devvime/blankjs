@@ -26,6 +26,15 @@ class User {
     }
   }
 
+  async findByEmail(email) {
+    try {
+      return await database.select("*").from("users").where({ email });
+    } catch (err) {
+      console.log(err);
+      return [];
+    }
+  }
+
   async create(data = {}) {
     try {
       const passwordHash = await bcrypt.hash(data.password, 10);
@@ -42,12 +51,47 @@ class User {
     }
   }
 
-  async findByEmail(email) {
+  async update(id, data = {}) {
+    const user = await this.findById(id);
+
+    if (user === undefined) {
+      return {
+        status: 404,
+        error: true,
+        message: "User is not found!",
+      };
+    }
+
+    const values = {};
+    let emailExists = false;
+
+    if (data.email !== undefined && data.email !== user.email) {
+      emailExists = await this.findByEmail(data.email);
+      if (emailExists.length > 0) {
+        return {
+          status: 409,
+          error: true,
+          message: `This email ${data.email} already exists!`,
+        };
+      }
+      values.email = data.email;
+    }
+    if (data.name !== undefined) values.name = data.name;
+
     try {
-      return await database.select("*").from("users").where({ email });
+      await database.update(values).where({ id }).table("users");
+      const result = await this.findById(id);
+      return {
+        error: false,
+        status: 200,
+        message: "Successfully edited!",
+        data: result,
+      };
     } catch (err) {
-      console.log(err);
-      return [];
+      return {
+        error: true,
+        message: err,
+      };
     }
   }
 }

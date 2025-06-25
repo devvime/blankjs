@@ -35,6 +35,16 @@ class UserService {
       console.log(err);
     }
   }
+
+  async update(req, res) {
+    const userId = req.params.id;
+    const result = await User.update(userId, req.body);
+    if (result.error) {
+      return res.json(result);
+    }
+    res.status(result.status);
+    res.json(result);
+  }
 }
 
 export default new UserService();
