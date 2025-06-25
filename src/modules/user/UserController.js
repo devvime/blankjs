@@ -30,4 +30,6 @@ UserController.put(
   UserService.update
 );
 
+UserController.delete("/user/:id", UserService.destroy);
+
 export default UserController;

@@ -94,6 +94,31 @@ class User {
       };
     }
   }
+
+  async destory(id) {
+    const user = await this.findById(id);
+    if (user.length === 0) {
+      return {
+        error: true,
+        status: 404,
+        message: "User is not found!",
+      };
+    }
+
+    try {
+      await database.delete().where({ id }).table("users");
+      return {
+        error: false,
+        status: 200,
+        message: "Successfully deleted!",
+      };
+    } catch (err) {
+      return {
+        error: true,
+        message: err,
+      };
+    }
+  }
 }
 
 export default new User();

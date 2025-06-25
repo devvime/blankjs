@@ -45,6 +45,13 @@ class UserService {
     res.status(result.status);
     res.json(result);
   }
+
+  async destroy(req, res) {
+    const userId = req.params.id;
+    const result = await User.destory(userId);
+    res.status(result.status);
+    return res.json(result);
+  }
 }
 
 export default new UserService();

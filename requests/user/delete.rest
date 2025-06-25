@@ -1,0 +1,2 @@
+### Delete user by id
+DELETE {{baseURL}}/user/8

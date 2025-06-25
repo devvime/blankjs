@@ -1,4 +1,4 @@
-### Register new user 
+### Update user by id
 PUT {{baseURL}}/user/8
 Content-Type: application/json
 
