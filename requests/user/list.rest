@@ -1,5 +1,7 @@
 ### List all users
 GET {{baseURL}}/user
+Authorization: Bearer {{token}}
 
 ### List user by id
 GET {{baseURL}}/user/7
+Authorization: Bearer {{token}}

@@ -5,6 +5,7 @@ import cors from "cors";
 
 import UserController from "./modules/user/UserController.js";
 import PasswordRecoveryPasswordController from "./modules/passwordRecoveryToken/PasswordRecoveryTokenController.js";
+import AuthController from "./modules/auth/AuthController.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 
 app.use("/", UserController);
 app.use("/", PasswordRecoveryPasswordController);
+app.use("/", AuthController);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server running on port:", process.env.PORT || 3000);

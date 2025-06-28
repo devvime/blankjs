@@ -1,6 +1,7 @@
 ### Register new user 
 POST {{baseURL}}/user 
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Steve", 
