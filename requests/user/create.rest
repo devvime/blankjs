@@ -4,7 +4,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "Steve", 
-  "email": "steve@admin.com",
-  "password": "admin"
+  "name": "Other Steve", 
+  "email": "other.steve@admin.com",
+  "password": "admin",
+  "role": 1
 }

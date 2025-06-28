@@ -1,23 +1,21 @@
 import express from "express";
-import { body } from "express-validator";
-
-import PasswordRecoveryTokenService from "./PasswordRecoveryTokenService.js";
-import PasswordRecoveryTokenDTO from "./PasswordRecoveryTokenDTO.js";
+import PasswordRecoveryTokenService from "../services/PasswordRecoveryTokenService.js";
+import {
+  passwordRecoverTokenDTO,
+  passwordRecoveryTokenDTO,
+} from "../dtos/PasswordRecoveryTokenDTO.js";
 
 const PasswordRecoveryPasswordController = express.Router();
 
 PasswordRecoveryPasswordController.post(
   "/recoveryPassword",
-  body("email").isEmail(),
-  body("email").notEmpty(),
-  PasswordRecoveryTokenDTO.verify,
+  passwordRecoveryTokenDTO,
   PasswordRecoveryTokenService.recoverPassword
 );
 
 PasswordRecoveryPasswordController.post(
   "/changePassword/:token",
-  body("password").notEmpty(),
-  PasswordRecoveryTokenDTO.verify,
+  passwordRecoverTokenDTO,
   PasswordRecoveryTokenService.changePassword
 );
 

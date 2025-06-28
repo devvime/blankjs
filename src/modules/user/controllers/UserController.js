@@ -1,8 +1,8 @@
 import express from "express";
-import { body } from "express-validator";
-import AuthGuard from "../../guards/AuthGuard.js";
-import UserService from "./UserService.js";
-import UserDTO from "./UserDTO.js";
+import AuthGuard from "../../../guards/AuthGuard.js";
+import UserService from "../services/UserService.js";
+import { createUserDTO } from "../dtos/CreateUserDTO.js";
+import { updateUserDTO } from "../dtos/UpdateUserDTO.js";
 
 const UserController = express.Router();
 
@@ -13,22 +13,14 @@ UserController.get("/user/:id", AuthGuard.verify, UserService.show);
 UserController.post(
   "/user",
   AuthGuard.verify,
-  body("name").notEmpty(),
-  body("email").isEmail(),
-  body("password").notEmpty(),
-  body("role").isEmpty(),
-  UserDTO.verify,
+  createUserDTO,
   UserService.store
 );
 
 UserController.put(
   "/user/:id",
   AuthGuard.verify,
-  body("name").optional(),
-  body("email").isEmail().optional(),
-  body("password").isEmpty(),
-  body("role").isEmpty(),
-  UserDTO.verify,
+  updateUserDTO,
   UserService.update
 );
 

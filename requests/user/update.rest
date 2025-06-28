@@ -1,9 +1,10 @@
 ### Update user by id
-PUT {{baseURL}}/user/8
+PUT {{baseURL}}/user/10
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
   "name": "Steve",
-  "email": "steve@steve.com"
+  "email": "steve@steve.com",
+  "role": 1
 }

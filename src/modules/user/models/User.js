@@ -1,4 +1,4 @@
-import database from "../../database/database.js";
+import database from "../../../database/database.js";
 import bcrypt from "bcrypt";
 
 class User {

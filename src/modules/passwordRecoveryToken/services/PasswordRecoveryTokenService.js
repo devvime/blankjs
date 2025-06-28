@@ -1,7 +1,5 @@
-import database from "../../database/database.js";
-import User from "../user/User.js";
-import PasswordRevoceryToken from "./PasswordRevoceryToken.js";
-import PasswordRecoveryToken from "./PasswordRevoceryToken.js";
+import User from "../../user/models/User.js";
+import PasswordRevoceryToken from "../models/PasswordRevoceryToken.js";
 
 class PasswordRecoveryTokenService {
   async recoverPassword(req, res) {

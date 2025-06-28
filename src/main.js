@@ -3,9 +3,9 @@ import bodyParser from "body-parser";
 import express from "express";
 import cors from "cors";
 
-import UserController from "./modules/user/UserController.js";
-import PasswordRecoveryPasswordController from "./modules/passwordRecoveryToken/PasswordRecoveryTokenController.js";
-import AuthController from "./modules/auth/AuthController.js";
+import UserController from "./modules/user/controllers/UserController.js";
+import PasswordRecoveryPasswordController from "./modules/passwordRecoveryToken/controllers/PasswordRecoveryTokenController.js";
+import AuthController from "./modules/auth/controllers/AuthController.js";
 
 const app = express();
 
