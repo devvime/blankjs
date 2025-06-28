@@ -1,8 +1,8 @@
 import express from "express";
-import AuthGuard from "../../../guards/AuthGuard.js";
-import UserService from "../services/UserService.js";
-import { createUserDTO } from "../dtos/CreateUserDTO.js";
-import { updateUserDTO } from "../dtos/UpdateUserDTO.js";
+import AuthGuard from "../../../guards/auth.guard.js";
+import UserService from "../services/user.service.js";
+import { createUserDTO } from "../dtos/create-user.dto.js";
+import { updateUserDTO } from "../dtos/update-user.dto.js";
 
 const UserController = express.Router();
 

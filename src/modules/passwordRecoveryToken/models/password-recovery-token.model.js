@@ -1,5 +1,5 @@
 import database from "../../../database/database.js";
-import User from "../../user/models/User.js";
+import User from "../../user/models/user.model.js";
 
 class PasswordRecoveryToken {
   table = "passwordTokens";

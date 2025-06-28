@@ -1,6 +1,6 @@
 import express from "express";
-import AuthService from "../services/AuthService.js";
-import { authDTO } from "../dtos/AuthDTO.js";
+import AuthService from "../services/auth.service.js";
+import { authDTO } from "../dtos/auth.dto.js";
 
 const AuthController = express.Router();
 

@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import User from "../../user/models/User.js";
+import User from "../../user/models/user.model.js";
 
 class AuthService {
   async auth(req, res) {
