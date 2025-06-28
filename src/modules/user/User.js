@@ -2,12 +2,14 @@ import database from "../../database/database.js";
 import bcrypt from "bcrypt";
 
 class User {
+  table = "users";
+
   async findAll(
     fields = ["id", "name", "email", "role", "created_at", "updated_at"],
     where = {}
   ) {
     try {
-      return await database.select(fields).table("users").where(where);
+      return await database.select(fields).table(this.table).where(where);
     } catch (err) {
       console.log(err);
       return [];
@@ -19,7 +21,7 @@ class User {
     fields = ["id", "name", "email", "role", "created_at", "updated_at"]
   ) {
     try {
-      return await database.select(fields).table("users").where({ id });
+      return await database.select(fields).table(this.table).where({ id });
     } catch (err) {
       console.log(err);
       return [];
@@ -28,7 +30,7 @@ class User {
 
   async findByEmail(email) {
     try {
-      return await database.select("*").from("users").where({ email });
+      return await database.select("*").from(this.table).where({ email });
     } catch (err) {
       console.log(err);
       return [];
@@ -45,7 +47,7 @@ class User {
           password: passwordHash,
           role: 0,
         })
-        .table("users");
+        .table(this.table);
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +81,7 @@ class User {
     if (data.name !== undefined) values.name = data.name;
 
     try {
-      await database.update(values).where({ id }).table("users");
+      await database.update(values).where({ id }).table(this.table);
       const result = await this.findById(id);
       return {
         error: false,
@@ -106,7 +108,7 @@ class User {
     }
 
     try {
-      await database.delete().where({ id }).table("users");
+      await database.delete().where({ id }).table(this.table);
       return {
         error: false,
         status: 200,
@@ -115,6 +117,28 @@ class User {
     } catch (err) {
       return {
         error: true,
+        message: err,
+      };
+    }
+  }
+
+  async changePassword(id, newPassword, token) {
+    const passwordHash = await bcrypt.hash(newPassword, 10);
+    try {
+      await database
+        .update({ password: passwordHash })
+        .where({ id })
+        .table(this.table);
+
+      return {
+        error: false,
+        success: true,
+        message: "Password updated successfully!",
+      };
+    } catch (err) {
+      return {
+        error: true,
+        success: false,
         message: err,
       };
     }
