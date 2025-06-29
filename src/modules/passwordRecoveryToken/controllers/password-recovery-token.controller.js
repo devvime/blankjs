@@ -1,22 +1,23 @@
 import express from "express";
-import PasswordRecoveryTokenService from "../services/password-recovery-token.service.js";
 import {
   passwordRecoverTokenDTO,
   passwordRecoveryTokenDTO,
 } from "../dtos/password-recovery-token.dto.js";
+import { recoverPasswordService } from "../services/recover-password.service.js";
+import { changePasswordService } from "../services/change-password.service.js";
 
 const PasswordRecoveryController = express.Router();
 
 PasswordRecoveryController.post(
   "/recoveryPassword",
   passwordRecoveryTokenDTO,
-  PasswordRecoveryTokenService.recoverPassword
+  recoverPasswordService
 );
 
 PasswordRecoveryController.post(
   "/changePassword/:token",
   passwordRecoverTokenDTO,
-  PasswordRecoveryTokenService.changePassword
+  changePasswordService
 );
 
 export default PasswordRecoveryController;

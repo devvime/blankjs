@@ -1,3 +1,3 @@
 ### Delete user by id
-DELETE {{baseURL}}/user/10
+DELETE {{baseURL}}/user/12
 Authorization: Bearer {{token}}

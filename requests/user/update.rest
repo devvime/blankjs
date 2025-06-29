@@ -1,5 +1,5 @@
 ### Update user by id
-PUT {{baseURL}}/user/10
+PUT {{baseURL}}/user/12
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
