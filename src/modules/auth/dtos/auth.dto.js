@@ -1,4 +1,4 @@
-import DTO from "../../../shared/DTO.js";
+import DTO from "../../../shared/base.dto.js";
 import { body } from "express-validator";
 
 export const authDTO = [

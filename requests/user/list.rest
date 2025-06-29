@@ -3,5 +3,5 @@ GET {{baseURL}}/user
 Authorization: Bearer {{token}}
 
 ### List user by id
-GET {{baseURL}}/user/7
+GET {{baseURL}}/user/11
 Authorization: Bearer {{token}}

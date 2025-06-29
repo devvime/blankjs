@@ -5,6 +5,5 @@ Authorization: Bearer {{token}}
 
 {
   "name": "Steve",
-  "email": "steve@steve.com",
-  "role": 1
+  "email": "steve@steve.com"
 }

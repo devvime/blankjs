@@ -7,7 +7,7 @@ class AuthService {
     const { email, password } = req.body;
     const user = await User.findByEmail(email);
 
-    if (user === undefined || user.length === 0) {
+    if (user === undefined) {
       return res.json({
         error: true,
         success: false,
@@ -15,7 +15,7 @@ class AuthService {
       });
     }
 
-    const result = await bcrypt.compare(password, user[0].password);
+    const result = await bcrypt.compare(password, user.password);
 
     if (!result) {
       return res.json({
@@ -27,10 +27,10 @@ class AuthService {
 
     const token = jwt.sign(
       {
-        id: user[0].id,
-        name: user[0].name,
-        email: user[0].email,
-        role: user[0].role,
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
       },
       process.env.SECRET_PASS
     );
