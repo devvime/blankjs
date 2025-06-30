@@ -33,7 +33,14 @@ export async function updateUserService(req, res) {
 
   try {
     await await User.update(userId, values);
-    const result = await User.findById(userId);
+    const result = await User.findById(userId, [
+      "id",
+      "name",
+      "email",
+      "role",
+      "created_at",
+      "updated_at",
+    ]);
     return res.json({
       error: false,
       status: 200,

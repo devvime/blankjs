@@ -22,10 +22,16 @@ export async function createUserService(req, res) {
     });
 
     res.json({
+      error: false,
       success: true,
       message: "User created successfull!",
     });
   } catch (err) {
+    res.json({
+      error: true,
+      success: false,
+      message: `Error: ${err}`,
+    });
     console.log(err);
   }
 }
